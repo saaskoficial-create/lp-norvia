@@ -8,4 +8,6 @@ A labeled fictional lead was submitted through the mobile UI to the real Kestra 
 
 Local Lighthouse measurements before the final confirmation-spacing adjustment: mobile performance 100, accessibility 100 and SEO 100, LCP 1.1 s, CLS 0. These are laboratory measurements, not production field metrics.
 
-The public deployment is validated separately after release, including its API and a labeled fictional end-to-end submission. Deployment results belong in the main README once verified.
+GitHub Actions passed installation, lint, 19 TypeScript tests, 18 Python tests and the production build on Linux for commit `7fac40b508c794e8bef42dd9e0522ee90e6ab494`. The optional-dependency lockfile was regenerated in a clean Node 24 Linux container. [Verified CI run](https://github.com/saaskoficial-create/lp-norvia/actions/runs/40758499669).
+
+The Vercel adapter is implemented and tested locally. Public deployment awaits identification of the Saask Vercel team. After release, validate the public API and a labeled fictional end-to-end submission; do not equate local success with a published service.

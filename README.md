@@ -2,7 +2,7 @@
 
 Landing page independente para campanhas de segurança digital e continuidade operacional de transportadoras. React + TypeScript, Vite, Tailwind CSS e componentes shadcn/ui reais (Base UI). API Express no mesmo domínio para entregar solicitações ao Google Sheets da Saask por meio do Kestra. Idioma pt-BR.
 
-O preview local de produção está em **http://localhost:4173/**. A LP não substitui o site institucional; ainda não há publicação pública ou no domínio do cliente.
+O preview local de produção está em **http://localhost:4173/**. O código está salvo no repositório privado [saaskoficial-create/lp-norvia](https://github.com/saaskoficial-create/lp-norvia), branch `main`. A LP não substitui o site institucional; a publicação na Vercel aguarda identificação da equipe da Saask.
 
 ## Instalação e execução
 
@@ -104,7 +104,7 @@ O formulário precisa do runtime Node. Publicar só `dist` não executa a API. A
 
 Na Vercel, usar Node **24.x**, build `npm run build`, saída `dist` e as variáveis de servidor `KESTRA_LEAD_WEBHOOK_URL` e `NODEJS_HELPERS=0` em Production e Preview. Configurar `KESTRA_AUTHORIZATION` apenas se o destino exigir. Marcar credenciais como sensíveis; nunca prefixar com `VITE_`. A função usa um único hop de proxy confiável apenas quando `VERCEL=1` e deixa o parser Express aplicar o limite de 8kb. O cache e o limite locais são por instância; a deduplicação durável acontece no Kestra.
 
-Domínio público, GitHub e CI remoto ainda não foram publicados/executados. Há configuração de CI entregue. Definir canonical e URLs absolutas de compartilhamento somente quando o endereço público da LP estiver confirmado. `social-card.png` já está incluída.
+GitHub publicado em `main`; a checagem Linux passou com instalação limpa, lint, 19 testes TypeScript, 18 testes Python e build. A primeira checagem revelou dependências opcionais ausentes, corrigidas regenerando o lockfile em Node 24 Linux. O projeto está preparado para Vercel; a equipe de destino ainda precisa ser identificada. Definir canonical e URLs absolutas de compartilhamento quando o endereço público estiver confirmado. `social-card.png` já está incluída.
 
 Os 19 testes TypeScript e os 18 testes Python usam destinos simulados. Separadamente, um envio fictício pela interface foi confirmado no Kestra e na planilha; repetir o mesmo UUID não duplicou a linha. O evento de sucesso foi observado uma vez, sem dados de contato. As verificações estão resumidas em `VALIDATION.md`; IDs operacionais e credenciais ficam fora do repositório.
 
