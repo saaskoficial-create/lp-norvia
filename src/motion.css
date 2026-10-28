@@ -1,0 +1,9 @@
+/* Global preference restores readable static state; GSAP is reverted by the hook. */
+html[data-motion="paused"] *, html[data-motion="paused"] *::before, html[data-motion="paused"] *::after { animation:none !important; transition:none !important; }
+[data-process-line] { transform-origin:left center; }
+@media(prefers-reduced-motion:reduce) { [data-process-line] { transform:none !important; } }
+
+/* These visuals use GSAP only; the paused state is the ordinary CSS layout. */
+.process-story [data-process-panel] { transform-origin:center; }
+.process-story [data-process-line] { transform-origin:center top; }
+html[data-motion="paused"] .process-story [data-process-line] { transform:none !important; }

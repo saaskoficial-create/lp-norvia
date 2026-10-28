@@ -1,0 +1,37 @@
+.norvia-lead-form { display: flex; flex-direction: column; gap: 22px; color: #1f2327; font-size: 15px; text-align: left; }
+.norvia-form-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 18px; }
+.norvia-field { display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+.norvia-field-full { grid-column: 1 / -1; }
+.norvia-field label { color: #1f2327; font-size: 14px; font-weight: 600; }
+.norvia-field input, .norvia-field select { width: 100%; min-width: 0; height: 50px; border: 1px solid #d5d8d4; border-radius: 6px; background: #fff; padding: 0 14px; color: #1f2327; font: inherit; font-size: 15px; box-shadow: none; transition: border-color .18s, box-shadow .18s; }
+.norvia-field select { padding-right: 30px; }
+.norvia-field input::placeholder { color: #848985; font-size: 14px; }
+.norvia-field input:focus-visible, .norvia-field select:focus-visible { outline: 2px solid #d97706; outline-offset: 2px; border-color: #d97706; box-shadow: none; }
+.norvia-field [aria-invalid="true"] { border-color: #a33a25; }
+.norvia-field-error { margin: 0; color: #a33a25; font-size: 12px; line-height: 1.5; }
+.norvia-consent-wrap { display: grid; gap: 7px; }
+.norvia-consent { display: flex; align-items: flex-start; gap: 11px; color: #6a706d; font-size: 12px; line-height: 1.65; cursor: pointer; }
+.norvia-consent input { flex: 0 0 auto; width: 18px; height: 18px; margin: 3px 0 0; accent-color: #9b580c; }
+.norvia-consent input:focus-visible { outline: 2px solid #d97706; outline-offset: 3px; }
+.norvia-consent a { color: #74430c; text-decoration: underline; text-underline-offset: 3px; }
+.norvia-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.norvia-form-status:empty { display: none; }
+.norvia-form-submit { display: flex; justify-content: center; gap: 12px; width: 100%; min-height: 56px; padding: 15px 18px; border: 0; border-radius: 6px; background: #d97706; color: #161b1b; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; white-space: normal; line-height: 1.4; }
+.norvia-form-submit:not(:disabled):hover { background: #c56b04; }
+.norvia-form-submit:disabled { cursor: not-allowed; opacity: .62; }
+.norvia-form-submit:focus-visible { outline: 2px solid #93510a; outline-offset: 4px; }
+.norvia-form-reassurance { display: flex; align-items: center; justify-content: center; gap: 7px; margin: -9px 0 0; color: #6a706d; font-size: 11px; line-height: 1.5; }
+.norvia-form-reassurance svg { flex-shrink: 0; }
+.norvia-form-note { color: #6a706d; font-size: 13px; line-height: 1.6; margin: 0; }
+.norvia-form-unavailable { padding: 13px 15px; border: 1px solid #e3d9c5; border-radius: 6px; background: #faf5e9; font-size: 13px; line-height: 1.6; }
+.norvia-form-unavailable p { margin: 0 0 4px; }
+.norvia-form-unavailable a { display: inline-flex; align-items: center; gap: 4px; color: #74430c; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.norvia-form-error { margin: 12px 0 0; padding: 11px 14px; border-radius: 6px; background: #fff1ed; color: #9a3e2b; font-size: 13px; line-height: 1.6; }
+.norvia-form-success { display: flex; flex-direction: column; justify-content: center; gap: 20px; min-height: 440px; text-align: left; color: #1f2327; }
+.norvia-form-success > svg { color: #3e7555; }
+.norvia-form-success h3 { font-size: 30px; line-height: 1.1; margin: 0; letter-spacing: -.035em; }
+.norvia-form-success p { font-size: 16px; line-height: 1.7; margin: 0; color: #656c68; }
+.norvia-form-spinner { animation: norvia-form-spin 1s linear infinite; }
+@keyframes norvia-form-spin { to { transform: rotate(360deg); } }
+@media (max-width: 540px) { .norvia-form-fields { grid-template-columns: 1fr; gap: 18px; } .norvia-field-full { grid-column: auto; } .norvia-form-reassurance { font-size: 10px; } .norvia-form-submit { font-size: 14px; } }
+@media (prefers-reduced-motion: reduce) { .norvia-form-spinner { animation: none; } .norvia-field input, .norvia-field select { transition: none; } }

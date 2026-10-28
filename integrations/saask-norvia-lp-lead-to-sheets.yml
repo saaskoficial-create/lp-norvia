@@ -1,0 +1,43 @@
+id: saask.norvia.lp-lead-to-sheets
+namespace: saask.traffic
+description: Norvia LP consented lead validation and confirmed Google Sheets storage.
+concurrency:
+  limit: 1
+  behavior: QUEUE
+tasks:
+  - id: persist_lead
+    type: io.kestra.plugin.scripts.python.Script
+    containerImage: python:3.12-slim
+    timeout: PT40S
+    taskRunner:
+      type: io.kestra.plugin.scripts.runner.docker.Docker
+      volumes:
+        - /opt/kestra/norvia-google-oauth.json:/run/secrets/norvia-google-oauth.json:ro
+        - /opt/kestra/norvia-append-lead.py:/app/norvia-append-lead.py:ro
+    env:
+      GOOGLE_OAUTH_JSON: /run/secrets/norvia-google-oauth.json
+      SPREADSHEET_ID: 1yRGXffNhIA2lg4ZmI2nRSBSYhHs1LnLMZ2G4bu0B9O8
+      LEAD_RAW_BODY: "{{ trigger.body | toJson }}"
+    script: |
+      import runpy
+      runpy.run_path('/app/norvia-append-lead.py', run_name='__main__')
+outputs:
+  - id: ok
+    type: BOOL
+    value: "{{ outputs.persist_lead.vars.ok }}"
+  - id: stored
+    type: BOOL
+    value: "{{ outputs.persist_lead.vars.stored }}"
+  - id: requestId
+    type: STRING
+    value: "{{ outputs.persist_lead.vars.requestId }}"
+  - id: spreadsheetId
+    type: STRING
+    value: "{{ outputs.persist_lead.vars.spreadsheetId }}"
+triggers:
+  - id: lead_webhook
+    type: io.kestra.plugin.core.trigger.Webhook
+    key: "{{ kv('norvia_lp_webhook_key') }}"
+    allowConcurrent: true
+    wait: true
+    returnOutputs: true

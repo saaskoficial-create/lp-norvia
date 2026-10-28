@@ -1,0 +1,15 @@
+.git/
+.github/
+.vercel/
+node_modules/
+dist/
+.env*
+!.env.example
+integrations/
+*.md
+server/*.test.ts
+test-results/
+output/
+work/
+__pycache__/
+*.pyc

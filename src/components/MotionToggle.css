@@ -1,0 +1,7 @@
+.motion-toggle { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:44px; padding:8px 11px; border:1px solid #ffffff25; border-radius:100px; background:#ffffff04; color:#c8d0c9; cursor:pointer; white-space:nowrap; transition:background .18s,border-color .18s; }
+.motion-toggle > span { font:500 9px/1.4 'Archivo Variable',sans-serif; }
+.motion-toggle:hover:not(:disabled) { color:#ffd093; background:#eaa54a10; border-color:#f1bc735f; }
+.motion-toggle:disabled { color:#aeb9b2; opacity:.8; cursor:default; }
+.motion-toggle:focus-visible { outline:3px solid #ffc67c; outline-offset:4px; }
+@media(max-width:1100px) { .motion-toggle { width:44px; padding:9px; flex-shrink:0; } .motion-toggle > span { display:none; } }
+@media(max-width:767px) { .motion-toggle { margin-left:auto; } }
