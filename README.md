@@ -2,7 +2,7 @@
 
 Landing page independente para campanhas de segurança digital e continuidade operacional de transportadoras. React + TypeScript, Vite, Tailwind CSS e componentes shadcn/ui reais (Base UI). API Express no mesmo domínio para entregar solicitações ao Google Sheets da Saask por meio do Kestra. Idioma pt-BR.
 
-O preview local de produção está em **http://localhost:4173/**. O código está salvo no repositório público [saaskoficial-create/lp-norvia](https://github.com/saaskoficial-create/lp-norvia), branch `main`. A LP não substitui o site institucional; o cadastro na Vercel foi iniciado com o Google da Saask e a publicação aguarda a verificação por SMS exigida pela plataforma.
+Site publicado em **[lp-norvia.vercel.app](https://lp-norvia.vercel.app/)**, no time **Saask (`saask1`)** da Vercel. O código está salvo no repositório público [saaskoficial-create/lp-norvia](https://github.com/saaskoficial-create/lp-norvia), branch `main`. O preview local de produção continua em **http://localhost:4173/**. A LP é independente do site institucional. Um envio fictício pela interface pública foi confirmado de ponta a ponta até a planilha, passando pelo Kestra.
 
 ## Instalação e execução
 
@@ -96,7 +96,7 @@ Inspirado na leitura guiada do FitFácil, o desktop apresenta as etapas em texto
 
 O mobile prioriza o explorador interativo das cinco áreas de risco. As seis descrições adicionais de cobertura ficam em um único detalhe expansível com linhas de texto, sem empilhar seis cards. A explicação complementar sobre vazamentos também é expansível, e as fotos e espaçamentos foram compactados. O formulário e seus campos permanecem iguais. A abertura de detalhes recalcula os gatilhos de rolagem.
 
-O JavaScript inicial atual é de 273,88 kB (gzip 84,20 kB), incluindo a nova seção, os controles e a narrativa de etapas, frente aos 433,44 kB iniciais (gzip 137,49 kB). As verificações e seus limites estão em `VALIDATION.md`; resultados de laboratório local não comprovam métricas de usuários reais ou de uma futura hospedagem pública.
+O JavaScript inicial atual é de 273,88 kB (gzip 84,20 kB), incluindo a nova seção, os controles e a narrativa de etapas, frente aos 433,44 kB iniciais (gzip 137,49 kB). As verificações e seus limites estão em `VALIDATION.md`; resultados de laboratório local não comprovam métricas de usuários reais nem o desempenho público.
 
 ## Hospedagem e entrega
 
@@ -104,9 +104,13 @@ O formulário precisa do runtime Node. Publicar só `dist` não executa a API. A
 
 Na Vercel, usar Node **24.x**, build `npm run build`, saída `dist` e as variáveis de servidor `KESTRA_LEAD_WEBHOOK_URL` e `NODEJS_HELPERS=0` em Production e Preview. Configurar `KESTRA_AUTHORIZATION` apenas se o destino exigir. Marcar credenciais como sensíveis; nunca prefixar com `VITE_`. A função usa um único hop de proxy confiável apenas quando `VERCEL=1` e deixa o parser Express aplicar o limite de 8kb. O cache e o limite locais são por instância; a deduplicação durável acontece no Kestra.
 
-GitHub publicado como repositório público em `main`; a checagem Linux passou com instalação limpa, lint, 19 testes TypeScript, 18 testes Python e build. A primeira checagem revelou dependências opcionais ausentes, corrigidas regenerando o lockfile em Node 24 Linux. O adaptador está preparado para Vercel. O cadastro foi iniciado com o Google da Saask e aguarda a verificação de telefone por SMS exigida pela Vercel. Nenhum deploy na Vercel foi confirmado. Definir canonical e URLs absolutas de compartilhamento quando o endereço público estiver confirmado. `social-card.png` já está incluída.
+GitHub publicado como repositório público em `main`; a checagem Linux passou com instalação limpa, lint, 19 testes TypeScript, 18 testes Python e build. A primeira checagem revelou dependências opcionais ausentes, corrigidas regenerando o lockfile em Node 24 Linux. A produção foi publicada na Vercel, no time Saask (`saask1`), com status **Ready** e endereço **https://lp-norvia.vercel.app/**. O HTML usa esse endereço no canonical e em `og:url`; Open Graph e Twitter Card usam a URL absoluta de `social-card.png`.
 
-Os 19 testes TypeScript e os 18 testes Python usam destinos simulados. Separadamente, um envio fictício pela interface foi confirmado no Kestra e na planilha; repetir o mesmo UUID não duplicou a linha. O evento de sucesso foi observado uma vez, sem dados de contato. As verificações estão resumidas em `VALIDATION.md`; credenciais, registros de teste e identificadores privados de execução ficam fora do repositório.
+Verificações públicas realizadas: página inicial HTTP 200; `GET /api/leads/status` HTTP 200 com `available:true`; `GET /api/leads` HTTP 405; envio inválido HTTP 400. Um único envio fictício pela interface pública retornou HTTP 200 com `ok:true`, `stored:true` e o identificador correspondente. A linha foi confirmada uma única vez na aba **Leads LP**, com consentimento, UTMs e telefone normalizado com `+55`. O evento `lead_form_success` apareceu exatamente uma vez no `dataLayer`, sem dados pessoais.
+
+Os 18 recursos públicos verificados responderam HTTP 200, incluindo imagens e fontes. O GTM e o carregamento adiado de GSAP foram conferidos; nenhum endereço privado do webhook apareceu no HTML ou nos bundles públicos inspecionados. Dados e identificadores do teste ficam fora desta documentação pública.
+
+Os 19 testes TypeScript e os 18 testes Python usam destinos simulados. Antes da publicação, um envio fictício pelo preview local foi confirmado no Kestra e na planilha; repetir o mesmo UUID não duplicou a linha. O evento de sucesso foi observado uma vez, sem dados de contato. As verificações estão resumidas em `VALIDATION.md`; credenciais, registros de teste e identificadores privados de execução ficam fora do repositório.
 
 ## Fontes e ativos
 
